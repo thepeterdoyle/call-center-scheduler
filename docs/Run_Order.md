@@ -52,7 +52,7 @@
 
 ** 'seed_ops_employees.sql' ** → populates ops.employees
 
-** seed_ops_employees.sql → populates ops.employees **
+seed_ops_employees.sql → populates ops.employees
 ** seed_ops_shifts.sql → populates ops.shifts ** 
 ** seed_ops_accounts.sql → populates ops.accounts ** 
 ---
