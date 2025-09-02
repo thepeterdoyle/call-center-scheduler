@@ -1,0 +1,5 @@
+-- MIGRATION 001: Initialize datasets (BigQuery)
+CREATE SCHEMA IF NOT EXISTS `ref`  OPTIONS(location="US");
+CREATE SCHEMA IF NOT EXISTS `ops`  OPTIONS(location="US");
+CREATE SCHEMA IF NOT EXISTS `util` OPTIONS(location="US");
+CREATE SCHEMA IF NOT EXISTS `rpt`  OPTIONS(location="US");

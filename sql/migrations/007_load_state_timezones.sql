@@ -1,0 +1,7 @@
+-- MIGRATION 007: Load state→TZ mapping (choose one approach)
+-- A) From GCS:
+-- LOAD DATA OVERWRITE `ref.us_state_timezones`
+-- FROM FILES (format='CSV', uris=['gs://YOUR_BUCKET/data/ref/us_state_timezones.csv']);
+--
+-- B) Via CLI (local):
+-- bq load --source_format=CSV ref.us_state_timezones data/ref/us_state_timezones.csv state_code:STRING,tz_id:STRING
