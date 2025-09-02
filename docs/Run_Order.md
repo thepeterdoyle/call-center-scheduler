@@ -7,7 +7,7 @@
 
 ---
 
-### Reference (config/lookup) tables call-center-scheduler/sql/ddl/ref/
+### Reference (config/lookup) tables [sql/ddl/ref]
 
 
 2. **`010_ref_call_window_config.sql`**
@@ -31,7 +31,7 @@
 
 ---
 
-### Operational (fact) tables
+### Operational (fact) tables [sql/ddl/ops]
 
 11. **`020_ops_employees.sql`**
     Stores call center employee records (who they are, active status).
@@ -50,7 +50,7 @@
 
 ---
 
-### UDFs (helpers)
+### UDFs (helpers) [sql/ddl/udfs]
 
 18. **`100_util_representative_tz.sql`**
     Function that picks a representative time zone for a state (east vs west).
@@ -59,45 +59,47 @@
 
 ---
 
-### Stored procedure (orchestration)
+### Stored procedure (orchestration) [sql/procedures]
 
 20. **`200_ops_run_call_assignment_v2.sql`**
     Core procedure: looks at accounts, employees, configs, and time zones to generate daily call assignments and log the run.
 
 ---
 
-### Views (reporting)
+### Views (reporting) [sql/views]
 
 21. **`300_ref_us_state_offset_vs_et_today.sql`**
     Shows today’s offset between each state’s time zone and Eastern Time.
-22. **`310_rpt_agent_schedule_daily.sql`**
+
+### Views (reporting) [sql/views/rpt]
+23. **`310_rpt_agent_schedule_daily.sql`**
     Daily per-agent schedule report (who’s assigned what).
-23. **`311_rpt_agent_schedule_pending_today.sql`**
+24. **`311_rpt_agent_schedule_pending_today.sql`**
     Shows each agent’s pending (not yet completed) calls for today.
-24. **`320_rpt_daily_funnel.sql`**
+25. **`320_rpt_daily_funnel.sql`**
     Funnel report: assignments → attempts → completions.
-25. **`321_rpt_rolling_capacity.sql`**
+26. **`321_rpt_rolling_capacity.sql`**
     Rolling view of staffing capacity vs calls assigned.
-26. **`322_rpt_backlog_today.sql`**
+27. **`322_rpt_backlog_today.sql`**
     Snapshot of today’s remaining backlog.
-27. **`323_rpt_backlog_composition.sql`**
+28. **`323_rpt_backlog_composition.sql`**
     Breaks down backlog by state, priority, and account type.
-28. **`324_rpt_account_last_outcome.sql`**
+29. **`324_rpt_account_last_outcome.sql`**
     Shows the last call outcome for each account.
-29. **`325_rpt_hour_perf.sql`**
+30. **`325_rpt_hour_perf.sql`**
     Hourly performance metrics across employees and shifts.
-30. **`326_rpt_backlog_projection.sql`**
+31. **`326_rpt_backlog_projection.sql`**
     Projects how long until backlog is cleared at current pace.
-31. **`327_rpt_employee_daily.sql`**
+32. **`327_rpt_employee_daily.sql`**
     Daily employee performance summary.
-32. **`328_rpt_employee_adherence.sql`**
+33. **`328_rpt_employee_adherence.sql`**
     Measures adherence (calls made vs calls scheduled).
-33. **`329_rpt_backlog_age_hist.sql`**
+34. **`329_rpt_backlog_age_hist.sql`**
     Histogram of backlog account ages (how long accounts have waited).
 
 ---
 
-### Transforms / population jobs
+### Transforms / population jobs [sql/transforms]
 
 34. **`400_build_us_state_time_profile.sql`**
     Builds the derived state-time profiles from configs and DST rules.
@@ -106,7 +108,7 @@
 
 ---
 
-### Deploy / scheduled helpers
+### Deploy / scheduled helpers [sql/deploy]
 
 36. **`500_seed_minimal_config.sql`**
     Inserts baseline config so the system can run out of the box.
