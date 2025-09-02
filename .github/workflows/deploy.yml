@@ -1,0 +1,51 @@
+name: BigQuery Deploy
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+      BQ_LOCATION: ${{ secrets.BQ_LOCATION || 'US' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Auth (choose ONE method below; keep both blocks for now, we'll disable one)
+      - name: Auth via JSON key (Service Account)
+        if: ${{ secrets.GCP_SA_KEY != '' }}
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Auth via Workload Identity Federation (recommended)
+        if: ${{ secrets.GCP_SA_KEY == '' && secrets.GCP_WORKLOAD_IDENTITY_PROVIDER != '' && secrets.GCP_SERVICE_ACCOUNT != '' }}
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Verify auth
+        run: |
+          gcloud auth list
+          gcloud config set project "$GCP_PROJECT_ID"
+
+      - name: Run migrations in order
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for f in $(ls -1 sql/migrations/*.sql 2>/dev/null | sort); do
+            echo "Running $f"
+            bq --location="$BQ_LOCATION" query --project_id="$GCP_PROJECT_ID" --use_legacy_sql=false < "$f"
+          done
+          echo "✅ All migrations executed."
+
