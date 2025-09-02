@@ -1,5 +1,3 @@
-# call-center-scheduler
-
 # Call Center Scheduler (BigQuery)
 
 End-to-end, DST-aware, state-timezone scheduling + backlog burn analytics for national call centers.
