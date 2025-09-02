@@ -1,5 +1,5 @@
 
-# Migrations — run in this order
+# Query List — run in this order
 
 ### DDL/
 1. **`000_create_datasets.sql`**
