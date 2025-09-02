@@ -1,7 +1,7 @@
 
 # Query List — run in this order
 
-### DDL/
+### Dataset Creation [sql/ddl]
 1. **`000_create_datasets.sql`**
    Creates the base datasets (`ref`, `ops`, `rpt`) that all subsequent objects live in.
 
