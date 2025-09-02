@@ -48,6 +48,11 @@
 17. **`026_ops_run_log.sql`**
     Logs each run of the assignment procedure (when, how many calls assigned).
 
+### Insert Data into Operational tables [sql/seeds]
+
+** seed_ops_employees.sql → populates ops.employees **
+** seed_ops_shifts.sql → populates ops.shifts ** 
+** seed_ops_accounts.sql → populates ops.accounts ** 
 ---
 
 ### UDFs (helpers) [sql/ddl/udfs]
