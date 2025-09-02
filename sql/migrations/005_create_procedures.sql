@@ -1,0 +1,2 @@
+-- MIGRATION 005: Stored procedures
+-- TODO: Replace with ops.run_call_assignment_v2 definition (DST-aware planning)
