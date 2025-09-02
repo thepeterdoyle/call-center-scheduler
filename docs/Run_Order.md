@@ -7,7 +7,8 @@
 
 ---
 
-### Reference (config/lookup) tables
+### Reference (config/lookup) tables call-center-scheduler/sql/ddl
+/ref/
 
 2. **`010_ref_call_window_config.sql`**
    Defines allowed call windows (e.g., earliest and latest call times).
