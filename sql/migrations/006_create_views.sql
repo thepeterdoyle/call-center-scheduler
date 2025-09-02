@@ -1,2 +1,0 @@
--- MIGRATION 006: Reporting and helper views
--- TODO: Populate rpt.* views per spec
