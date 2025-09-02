@@ -50,11 +50,11 @@
 
 ### Insert Data into Operational tables [sql/seeds]
 
-**`seed_ops_employees.sql`**
+- **`seed_ops_employees.sql`**
    populates table ops.employees 
-**`seed_ops_shifts.sql`**
+- **`seed_ops_shifts.sql`**
    populates table ops.shifts 
-**`seed_ops_accounts.sql'**
+- **`seed_ops_accounts.sql'**
    populates table ops.accounts
 
 ---
