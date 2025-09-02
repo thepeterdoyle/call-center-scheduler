@@ -6,3 +6,6 @@
 - **rpt.***: Reporting views (agent schedule, funnels, backlog, projections, adherence, age).
 
 **Planner**: `ops.run_call_assignment_v2` builds hour buckets in ET, selects callable states using `DATETIME(hour_et, representative_tz)` (DST aware), computes capacity & dynamic quotas, honors sticky carryover, respects cooldowns, weights by hour performance, and assigns (sticky → same employee; else round-robin by flag).
+
+- Migrations reside in `sql/migrations` and are numbered `001` through `008`.
+- Seed CSVs live under `data/`.
